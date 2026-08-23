@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Metrics;
+using System.Drawing;
 using System.Net;
 using System.Text;
 using System.Threading.Channels;
@@ -65,6 +66,19 @@ namespace Assignment_oop05
             //A: No, an extension method cannot access private or protected members of the class it extends; it can only access its public members. 
             #endregion
 
+            #region Question05
+            //Q05
+            //a) What is a Partial Class?
+            //A: It is a class whose definition is split across multiple files, using the partial keyword. At compile time, the compiler combines all parts into a single class.
+            //b) Why would a developer split one class into multiple files?
+            //A:  A developer might split a class into multiple files for two main reasons:
+            //Maintainability & Readability: To keep source files smaller and better organized when a class grows very large.
+            //Team Collaboration: To allow multiple developers on a team to work on different parts of the same class simultaneously without merge conflicts.
+            //c) What is a Partial Method?
+            //A: A Partial Method is a method whose declaration (signature) is defined in one part of a partial class, and its optional implementation can be provided in another part. If no implementation is provided, the compiler removes the method call entirely.
+            //d) What happens if a declared partial method has no implementation?
+            //A: If a declared partial method has no implementation, the compiler simply removes the method definition and all calls to it, so nothing happens and it causes no compilation errors. 
+            #endregion
         }
     }
 }
