@@ -52,6 +52,19 @@ namespace Assignment_oop05
             // Can you create an object from it? No, you cannot create an object from a static class using the new keyword. 
             #endregion
 
+            #region Question04
+
+            //Q04
+            //a) What is an Extension Method?
+            //A: It is a special method that allows you to add new methods to an existing class or interface without modifying its original source code or creating a new derived class.
+            //b) What keyword must be used in the first parameter of an extension method?
+            //A: this
+            //c) Where must an extension method be declared?
+            //A: It must be declared inside a static class.
+            //d) Can an extension method access private members of the class it extends?
+            //A: No, an extension method cannot access private or protected members of the class it extends; it can only access its public members. 
+            #endregion
+
         }
     }
 }
