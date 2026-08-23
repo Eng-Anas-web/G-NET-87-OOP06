@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Metrics;
+﻿using Assignment_oop05.Classes;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Net;
 using System.Text;
@@ -79,6 +80,199 @@ namespace Assignment_oop05
             //d) What happens if a declared partial method has no implementation?
             //A: If a declared partial method has no implementation, the compiler simply removes the method definition and all calls to it, so nothing happens and it causes no compilation errors. 
             #endregion
+
+            #region Question06
+
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle();
+            DeliveryUtilities.PrintSeparator();
+
+
+            Console.WriteLine("\nCreating Shipments...");
+            DeliveryUtilities.PrintSeparator();
+
+            Shipment shipment1 = new StandardShipment(
+                "SH001",
+                "Standard Shipment",
+                3,
+                50,
+                new DeliveryAddress()
+            );
+
+            Console.WriteLine("Standard Shipment Created");
+
+            Shipment shipment2 = new ExpressShipment(
+                20,
+                "SH002",
+                "Express Shipment",
+                2,
+                50,
+                new DeliveryAddress()
+            );
+
+            Console.WriteLine("Express Shipment Created");
+
+            Shipment shipment3 = new InternationalShipment(
+                "USA",
+                30,
+                "SH003",
+                "International Shipment",
+                8,
+                50,
+                new DeliveryAddress()
+            );
+
+            Console.WriteLine("International Shipment Created");
+
+            Console.WriteLine(
+                $"\nTotal Shipments Created : {Shipment.GetTotalShipmentsCreated()}"
+            );
+
+
+
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Object Copying");
+            DeliveryUtilities.PrintSeparator();
+
+            // Reference Assignment
+            Shipment assignedShipment = shipment1;
+
+            Console.WriteLine($"\nOriginal Shipment  : {shipment1.TrackingCode}");
+            Console.WriteLine($"Assigned Shipment  : {assignedShipment.TrackingCode}");
+
+            Console.WriteLine(
+                $"\nSame Object : {object.ReferenceEquals(shipment1, assignedShipment)}"
+            );
+
+
+            Console.WriteLine("\n------------------------------------------");
+            Console.WriteLine("Shallow Copy");
+            Console.WriteLine("------------------------------------------");
+
+            Shipment shallowCopy = shipment1.ShallowCopy();
+
+            Console.WriteLine(
+                $"\nOriginal Shipment Address : {shipment1.Destination.GetFullAddress()}"
+            );
+
+            Console.WriteLine(
+                $"\nCopied Shipment Address   : {shallowCopy.Destination.GetFullAddress()}"
+            );
+
+            Console.WriteLine("\nChanging copied shipment address...");
+            // إذا كانت City مش موجودة، يمكنك استبدالها بإنشاء كائن عنوان جديد للـ shallowCopy أو تعديل خاصية متاحة
+            shallowCopy.Destination = new DeliveryAddress();
+
+            Console.WriteLine(
+                $"\nOriginal Shipment Address : {shipment1.Destination.GetFullAddress()}"
+            );
+
+            Console.WriteLine(
+                $"\nCopied Shipment Address   : {shallowCopy.Destination.GetFullAddress()}"
+            );
+
+            Console.WriteLine(
+                $"\nSame DeliveryAddress Object : " +
+                $"{object.ReferenceEquals(shipment1.Destination, shallowCopy.Destination)}"
+            );
+
+
+
+            Console.WriteLine("\n------------------------------------------");
+            Console.WriteLine("Deep Copy");
+            Console.WriteLine("------------------------------------------");
+
+            Shipment deepCopy = shipment1.DeepCopy();
+
+            Console.WriteLine(
+                $"\nOriginal Shipment Address : {shipment1.Destination.GetFullAddress()}"
+            );
+
+            Console.WriteLine(
+                $"\nCopied Shipment Address   : {deepCopy.Destination.GetFullAddress()}"
+            );
+
+            Console.WriteLine("\nChanging copied shipment description / properties...");
+       
+            deepCopy.Description = "Modified Deep Copy Description";
+
+            Console.WriteLine(
+                $"\nOriginal Shipment Description : {shipment1.Description}"
+            );
+
+            Console.WriteLine($"nuGet Copied Shipment Description: { deepCopy.Description} "
+);
+
+            Console.WriteLine(
+                $"\nSame DeliveryAddress Object : " +
+                $"{object.ReferenceEquals(shipment1.Destination, deepCopy.Destination)}"
+            );
+
+
+
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Extension Methods");
+            DeliveryUtilities.PrintSeparator();
+
+            shipment1.TrackingStatus = "In Transit";
+            shipment2.TrackingStatus = "Out For Delivery";
+            shipment3.TrackingStatus = "Delivered";
+
+            Console.WriteLine(shipment1.GetSummary());
+            Console.WriteLine(shipment2.GetSummary());
+            Console.WriteLine(shipment3.GetSummary());
+
+            Console.WriteLine(
+                $"\nSH001 Is Delivered : {shipment1.IsDelivered()}"
+            );
+
+            Console.WriteLine(
+                $"SH003 Is Delivered : {shipment3.IsDelivered()}"
+            );
+
+
+
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Tracking Status");
+            DeliveryUtilities.PrintSeparator();
+
+            shipment2.UpdateTrackingStatus("Out For Delivery");
+
+
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Static Utilities");
+            DeliveryUtilities.PrintSeparator();
+
+            Console.WriteLine("\n------------------------------------------");
+            Console.WriteLine("Delivery Center");
+            Console.WriteLine("------------------------------------------");
+
+            Console.WriteLine(
+                $"\nTotal Shipments Created : " +
+                $"{Shipment.GetTotalShipmentsCreated()}"
+            );
+
+
+
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Partial Method");
+            DeliveryUtilities.PrintSeparator();
+
+            shipment3.UpdateTrackingStatus("Delivered");
+
+
+
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Assignment Completed");
+            DeliveryUtilities.PrintSeparator();
+            #endregion
+
         }
     }
 }
