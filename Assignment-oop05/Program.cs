@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Net;
+using System.Text;
 using System.Threading.Channels;
+using System.Timers;
 
 namespace Assignment_oop05
 {
@@ -33,6 +35,23 @@ namespace Assignment_oop05
             //e) Give one situation where Deep Copy would be safer than Shallow Copy.
             //A: When duplicating an object (like a Shipment) that contains reference-type properties (like a DeliveryAddress), a Deep Copy is safer because modifying the nested properties of the copied object will not accidentally alter or corrupt the data of the original object. 
             #endregion
+
+            #region Question03
+            //Q03
+            //a) What is a static field, and how is it different from an instance field?
+            //A: Static Field: Belongs to the class itself rather than any specific instance. There is only one copy of a static field shared across all objects of that class.
+            //Instance Field: Belongs to a specific object.Every time you create a new object, a separate copy of the instance field is created for that specific object.
+            //b) What is a static method? Can a static method directly access instance members?
+            //A: What is it? A method that belongs to the class itself, so you can call it without creating an object.
+            // Can it access instance members? No, it cannot directly access normal instance members because it doesn't belong to any specific object.
+            //c) What is a static constructor, and when is it executed?
+            //A: What is it? A special constructor used to initialize static members.
+            //When is it executed ? It runs automatically only once the very first time the class is accessed, and it cannot be called manually.
+            //d) What is a static class? Can you create an object from a static class?
+            //A: What is it? A class that contains only static members and cannot be instantiated.
+            // Can you create an object from it? No, you cannot create an object from a static class using the new keyword. 
+            #endregion
+
         }
     }
 }
